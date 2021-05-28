@@ -1,36 +1,74 @@
 [![Python application test with Github Actions](https://github.com/Amine24h/building-a-ci-cd-pipeline/actions/workflows/pythonapp.yml/badge.svg)](https://github.com/Amine24h/building-a-ci-cd-pipeline/actions/workflows/pythonapp.yml)
 
 # Overview
-
-<TODO: complete this with an overview of your project>
+This project Setup a Continuous Integration/Continuous delivery pipeline for a Python-based machine learning application using the Flask web framework. At the end a fully tested Flask web application will be deployed in Azure App Service
 
 ## Project Plan
-<TODO: Project Plan
-
-* A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+* A [Trello board](https://trello.com/b/HQVQEKxr/buildingcicdpipeline) for the project
+* A [Spreadsheet](project-plan.xlsx) that includes the project plan
 
 ## Instructions
 
-<TODO:  
-* Architectural Diagram (Shows how key parts of the system work)>
+### Architectural Diagram :
 
-<TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
+![pycharm1](images/architecture.png)
 
-* Project running on Azure App Service
+## Launch Azure Cloud Shell
 
-* Project cloned into Azure Cloud Shell
+![pycharm1](images/launch-azure-cloud-shell.png)
 
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
+## Generate SSH key and upload the public key to github
 
-* Output of a test run
+```
+ssh-keygen -t rsa
+```
 
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
+## Clone the repository using Azure Cloud Shell
 
-* Running Azure App Service from Azure Pipelines automatic deployment
+```
+git clone git@github.com:Amine24h/building-a-ci-cd-pipeline.git
+```
+![pycharm1](images/project-cloned-into-azure-cloud-shell.png)
 
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
+## Create a new python virtual environnement
+
+```
+cd building-a-ci-cd-pipeline
+python -m venv building-a-ci-cd-pipeline-venv
+. building-a-ci-cd-pipeline-venv/bin/activate
+```
+
+## Install dependencies and build the app
+
+```
+make all
+```
+![pycharm1](images/make-all-1.png)
+![pycharm1](images/make-all-2.png)
+
+## Create Azure App Service
+
+```
+az webapp up --sku F1 -n building-a-ci-cd-pipeline-service
+```
+![pycharm1](images/create-azure-app-service.png)
+
+## Setup Azure DevOps
+
+- Go to https://dev.azure.com and sign in.
+- Create a new private project.
+- Under Project Settings create a new service connection and select Azure Resource Manager.
+- Create a Python-specific pipeline to deploy to App Service, and linked it to your GitHub repo.
+
+![pycharm1](images/successful-run-azure-pipelines.png)
+
+## Get app logs
+
+```
+az webapp log tail
+```
+
+## Test the app is up and running
 
 ```bash
 udacity@Azure:~$ ./make_predict_azure_app.sh
@@ -38,13 +76,14 @@ Port: 443
 {"prediction":[20.35373177134412]}
 ```
 
-* Output of streamed log files from deployed application
+> Don't forget to set the app name inside **make_predict_azure_app.sh** file
 
-> 
+![pycharm1](images/make-predictions.png)
+![pycharm1](images/app-running-on-azure-app-service.png)
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+One area that we could improve is to have multiple environments (Dev, Staging and Production) and have a pipeline for each environment.
 
 ## Demo 
 
