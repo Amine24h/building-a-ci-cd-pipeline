@@ -1,5 +1,7 @@
 [![Python application test with Github Actions](https://github.com/Amine24h/building-a-ci-cd-pipeline/actions/workflows/pythonapp.yml/badge.svg)](https://github.com/Amine24h/building-a-ci-cd-pipeline/actions/workflows/pythonapp.yml)
 
+[![Build Status for Azure DevOps](https://dev.azure.com/aminekabouche/building-a-ci-cd-pipeline/_apis/build/status/Amine24h.building-a-ci-cd-pipeline?branchName=main)](https://dev.azure.com/aminekabouche/building-a-ci-cd-pipeline/_build/latest?definitionId=6&branchName=main)
+
 # Overview
 This project Setup a Continuous Integration/Continuous delivery pipeline for a Python-based machine learning application using the Flask web framework. At the end a fully tested Flask web application will be deployed in Azure App Service
 
