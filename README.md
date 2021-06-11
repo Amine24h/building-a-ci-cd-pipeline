@@ -24,6 +24,7 @@ This project Setup a Continuous Integration/Continuous delivery pipeline for a P
 ```
 ssh-keygen -t rsa
 ```
+![pycharm1](images/add-ssh-key-to-github.png)
 
 ## Clone the repository using Azure Cloud Shell
 
@@ -51,7 +52,7 @@ make all
 ## Create Azure App Service
 
 ```
-az webapp up --sku F1 -n building-a-ci-cd-pipeline-service
+az webapp up --sku B1 -n building-a-ci-cd-pipeline-service
 ```
 ![pycharm1](images/create-azure-app-service.png)
 
@@ -63,11 +64,12 @@ az webapp up --sku F1 -n building-a-ci-cd-pipeline-service
 - Create a Python-specific pipeline to deploy to App Service, and linked it to your GitHub repo.
 
 ![pycharm1](images/successful-run-azure-pipelines.png)
+![pycharm1](images/successful-run-github-actions.png)
 
 ## Get app logs
 
 ```
-az webapp log tail
+az webapp log tail --name building-a-ci-cd-pipeline-service --resource-group amine.kabouche_rg_Linux_centralus
 ```
 
 ## Test the app is up and running
@@ -82,6 +84,23 @@ Port: 443
 
 ![pycharm1](images/make-predictions.png)
 ![pycharm1](images/app-running-on-azure-app-service.png)
+
+## Load testing
+
+- Install locust (performance testing tool)
+```bash
+pip install locust
+```
+- Start locust (performance testing tool)
+```bash
+locust
+```
+- Open a browser and go to http://localhost:8089.
+- Enter the total number of users to simulate and spawn rate.
+- Set the host with the link to azure webapp https://building-ci-cd-pipelines.azurewebsites.net and click Start Swarming.
+
+![pycharm1](images/locust-setup.png)
+![pycharm1](images/locust-run.png)
 
 ## Enhancements
 
