@@ -71,6 +71,7 @@ az webapp up --sku B1 -n building-a-ci-cd-pipeline-service
 ```
 az webapp log tail --name building-a-ci-cd-pipeline-service --resource-group amine.kabouche_rg_Linux_centralus
 ```
+![pycharm1](images/appservice-logs.png)
 
 ## Test the app is up and running
 
