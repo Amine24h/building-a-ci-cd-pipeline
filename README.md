@@ -56,6 +56,11 @@ az webapp up --sku B1 -n building-a-ci-cd-pipeline-service
 ```
 ![pycharm1](images/create-azure-app-service.png)
 
+## Github Actions
+
+![pycharm1](images/github-actions.png)
+![pycharm1](images/successful-run-github-actions.png)
+
 ## Setup Azure DevOps
 
 - Go to https://dev.azure.com and sign in.
@@ -63,8 +68,8 @@ az webapp up --sku B1 -n building-a-ci-cd-pipeline-service
 - Under Project Settings create a new service connection and select Azure Resource Manager.
 - Create a Python-specific pipeline to deploy to App Service, and linked it to your GitHub repo.
 
+![pycharm1](images/jobs-run-git.png)
 ![pycharm1](images/successful-run-azure-pipelines.png)
-![pycharm1](images/successful-run-github-actions.png)
 
 ## Get app logs
 
