@@ -70,6 +70,7 @@ az webapp up --sku B1 -n building-a-ci-cd-pipeline-service
 
 ![pycharm1](images/jobs-run-git.png)
 ![pycharm1](images/successful-run-azure-pipelines.png)
+![pycharm1](images/deployed-app.png)
 
 ## Get app logs
 
